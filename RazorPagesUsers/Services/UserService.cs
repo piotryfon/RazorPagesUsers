@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using RazorPagesUsers.Data;
 using RazorPagesUsers.UserModel;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,11 +15,9 @@ namespace RazorPagesUsers.Services
 
     public class UserService : IUserService
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
         private readonly ApplicationDbContext _context;
-        public UserService(ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
+        public UserService(ApplicationDbContext context)
         {
-            _hostingEnvironment = hostingEnvironment;
             _context = context;
         }
 

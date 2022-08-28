@@ -13,9 +13,9 @@ namespace RazorPagesUsers.Pages.UserPages
 {
     public class EditModel : PageModel
     {
-        private readonly RazorPagesUsers.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public EditModel(RazorPagesUsers.Data.ApplicationDbContext context)
+        public EditModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -32,10 +32,6 @@ namespace RazorPagesUsers.Pages.UserPages
 
             User = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (User == null)
-            {
-                return NotFound();
-            }
             return Page();
         }
 
@@ -66,7 +62,7 @@ namespace RazorPagesUsers.Pages.UserPages
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Paginated");
         }
 
         private bool UserExists(int id)

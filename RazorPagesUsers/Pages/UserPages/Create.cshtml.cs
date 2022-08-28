@@ -12,9 +12,9 @@ namespace RazorPagesUsers.Pages.UserPages
 {
     public class CreateModel : PageModel
     {
-        private readonly RazorPagesUsers.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateModel(RazorPagesUsers.Data.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -27,7 +27,6 @@ namespace RazorPagesUsers.Pages.UserPages
         [BindProperty]
         public User User { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -38,7 +37,7 @@ namespace RazorPagesUsers.Pages.UserPages
             _context.Users.Add(User);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Paginated");
         }
     }
 }

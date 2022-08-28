@@ -53,7 +53,7 @@ namespace RazorPagesUsers.Pages.UserPages
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Paginated");
         }
     }
 }
