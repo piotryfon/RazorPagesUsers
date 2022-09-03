@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RazorPagesUsers.Entities;
 using RazorPagesUsers.UserModel;
 
 namespace RazorPagesUsers.Data
@@ -11,5 +12,6 @@ namespace RazorPagesUsers.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }

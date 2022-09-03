@@ -4,7 +4,7 @@
 <h2>Pagination Example</h2>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create2">Create New</a>
 </p>
 
 <table class="table table-striped">
@@ -15,8 +15,8 @@
             <td>@item.Name</td>
             <td>@item.EmailAddress</td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Edit2" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details2" asp-route-id="@item.Id">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>

@@ -1,18 +1,20 @@
-﻿using System.Linq;
+﻿
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesUsers.Data;
 using RazorPagesUsers.UserModel;
 
 namespace RazorPagesUsers.Pages.UserPages
 {
-    public class EditModel : PageModel
+    public class Edit2Model : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public EditModel(ApplicationDbContext context)
+        public Edit2Model(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -27,8 +29,14 @@ namespace RazorPagesUsers.Pages.UserPages
                 return NotFound();
             }
 
-            User = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
+            User = await _context.Users
+                .Include(u => u.Role).FirstOrDefaultAsync(m => m.Id == id);
 
+            if (User == null)
+            {
+                return NotFound();
+            }
+           ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Name");
             return Page();
         }
 
